@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Radio1" />
+        <module name="javaqamvn" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Radio1" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
