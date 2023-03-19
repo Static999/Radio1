@@ -1,57 +1,53 @@
 package ru.netology;
 
 public class Radio {
-    private int currentStation;
-    private int currentVolume;
 
-    public void nextVolume() {
-        if (currentVolume < 10) {
+    public int currentRadioStationNumber;
+    public int radioStationNumber = 10;
+    public int minRadioStationNumber = 0;
+    public int maxRadioStationNumber = 9;
+    public int currentVolume = 50;
+    public int minVolume = 0;
+    public int maxVolume = 100;
+
+    public Radio(int number) {
+        this.radioStationNumber = number;
+        this.maxRadioStationNumber = number - 1;
+    }
+
+    public Radio() {
+
+    }
+
+    public void setCurrentRadioStation(int newCurrentRadioStationNumber) {
+        if (newCurrentRadioStationNumber < minRadioStationNumber) {
+            currentRadioStationNumber = maxRadioStationNumber;
+            return;
+        }
+        if (newCurrentRadioStationNumber > maxRadioStationNumber) {
+            currentRadioStationNumber = minRadioStationNumber;
+            return;
+        }
+        currentRadioStationNumber = newCurrentRadioStationNumber;
+    }
+
+    public void next() {
+        setCurrentRadioStation(currentRadioStationNumber + 1);
+    }
+
+    public void prev() {
+        setCurrentRadioStation(currentRadioStationNumber - 1);
+    }
+
+    public void increaseVolume() {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
-        } else {
-            currentVolume = 0;
         }
     }
-    public void beforeVolume() {
-        if (currentVolume > 0) {
+
+    public void decreaseVolume() {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
-        } else {
-            currentVolume = 0;
         }
-    }
-
-    public void nextStation() {
-        if (currentStation < 9) {
-            currentStation++;
-        } else {
-            currentStation = 0;
-        }
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
-            return;
-        }
-        if (currentStation > 9) {
-            return;
-        }
-        this.currentStation = currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
-            return;
-        }
-        if (currentVolume > 10) {
-            return;
-        }
-        this.currentVolume = currentVolume;
     }
 }
